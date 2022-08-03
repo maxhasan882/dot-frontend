@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import ThemeConfig from "./theme";
+import useAuth from "./hooks/useAuth";
+import RouteApp from "./route";
+import ScrollToTop from "./components/ScrollToTop";
+import LoadingScreen from "./components/LoadingScreen";
+import RtlLayout from "./components/RtlLayout";
+import NotistackProvider from "./components/NotistackProvider";
+import ThemePrimaryColor from "./components/ThemePrimaryColor";
+import ThemeLocalization from "./components/ThemeLocalization";
 
 function App() {
+  const { isInitialized } = useAuth();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ThemeConfig>
+        <ThemePrimaryColor>
+          <ThemeLocalization>
+            <RtlLayout>
+              <NotistackProvider>
+                {/*<Settings />*/}
+                <ScrollToTop />
+                {isInitialized ? <RouteApp /> : <LoadingScreen />}
+              </NotistackProvider>
+            </RtlLayout>
+          </ThemeLocalization>
+        </ThemePrimaryColor>
+      </ThemeConfig>
   );
 }
 
