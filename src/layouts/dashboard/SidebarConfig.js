@@ -40,9 +40,9 @@ const sidebarConfig = [
         icon: ICONS.dashboard,
       },
       {
-        title: "students",
-        path: PATH_DASHBOARD.general.student,
-        icon: ICONS.user,
+        title: "products",
+        path: PATH_DASHBOARD.general.products,
+        icon: ICONS.cart,
       },
       {
         title: "analytics",

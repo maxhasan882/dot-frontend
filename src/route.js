@@ -69,7 +69,8 @@ export default function RouteApp() {
             ),
             children: [
                 { path: "", element: <Navigate to="/dashboard/app" replace /> },
-                { path: "app", element: <DashboardLayout /> },
+                { path: "app", element: <GeneralApp /> },
+                { path: "products", element: <EcommerceProductList /> },
             ],
         },
         {
@@ -91,7 +92,8 @@ export default function RouteApp() {
 
 const Login = Loadable(lazy(() => import("./pages/authentication/Login")));
 const Register = Loadable(lazy(() => import("./pages/authentication/Register")));
-
+const GeneralApp = Loadable(lazy(() => import('./pages/GeneralApp')));
+const EcommerceProductList = Loadable(lazy(() => import('./pages/EcommerceProductList')));
 const Page500 = Loadable(lazy(() => import("./pages/Page500")));
 const NotFound = Loadable(lazy(() => import("./pages/Page404")));
 

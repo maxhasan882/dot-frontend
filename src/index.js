@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-// import { Provider as ReduxProvider } from "react-redux";
-// import { PersistGate } from "redux-persist/lib/integration/react";
+import { Provider as ReduxProvider } from "react-redux";
+import { PersistGate } from "redux-persist/lib/integration/react";
 
 import "./index.css";
 import App from "./App";
@@ -12,12 +12,12 @@ import { SettingsProvider } from "./contexts/SettingsContext";
 import { CollapseDrawerProvider } from "./contexts/CollapseDrawerContext";
 import { AuthProvider } from "./contexts/JWTContext";
 
-// import { store, persistor } from "./_redux/store";
+import { store, persistor } from "./redux/store";
 
 ReactDOM.render(
     <HelmetProvider>
-        {/*<ReduxProvider store={store}>*/}
-        {/*    <PersistGate persistor={persistor}>*/}
+        <ReduxProvider store={store}>
+            <PersistGate persistor={persistor}>
                 <SettingsProvider>
                     <CollapseDrawerProvider>
                         <BrowserRouter>
@@ -27,8 +27,8 @@ ReactDOM.render(
                         </BrowserRouter>
                     </CollapseDrawerProvider>
                 </SettingsProvider>
-        {/*    </PersistGate>*/}
-        {/*</ReduxProvider>*/}
+            </PersistGate>
+        </ReduxProvider>
     </HelmetProvider>,
     document.getElementById("root")
 );
